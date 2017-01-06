@@ -31,6 +31,7 @@ usb.Device.prototype.timeout = 1000
 
 usb.Device.prototype.open = function(defaultConfig){
 	this.__open()
+	this.__claimInterface(0); // AC: inspired by https://github.com/tessel/node-usb/issues/61 to avoid LIBUSB_ERROR_NOT_FOUND
 	if (defaultConfig === false) return
 	this.interfaces = []
 	var len = this.configDescriptor.interfaces.length
