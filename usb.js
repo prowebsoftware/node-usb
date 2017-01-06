@@ -207,7 +207,9 @@ Interface.prototype.isKernelDriverActive = function(){
 }
 
 Interface.prototype.detachKernelDriver = function() {
-	return this.device.__detachKernelDriver(this.id)
+	try {
+		return this.device.__detachKernelDriver(this.id)
+	}catch(e){ console.log('AC: caught error inside detachKernelDriver'); }
 };
 
 Interface.prototype.attachKernelDriver = function() {
